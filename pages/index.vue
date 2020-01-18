@@ -1,31 +1,19 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-test
-      </h1>
-      <h2 class="subtitle">
-        KEEL&#39;s nuxt Test proj
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div id="app">
+        <h1 class="title">
+          test_TODO
+        </h1>
+        <input type="text" v-model="newItem">
+        <form v-on:submit.prevent>
+          <button v-on:click="addItem">add task</button>
+        </form>
+        <li v-for="todo in todos">
+          {{ todo.item }}
+        </li>
+        <h2 class="subtitle">
+          慣れるんだよォ～～
+        </h2>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -34,6 +22,20 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      newItem: '',
+      todos: []
+    }
+  },
+  methods: {
+    addItem: function(event) {
+      var todo = {
+        item: this.newItem
+      };
+    this.todos.push(todo)
+    }
   }
 }
 </script>
@@ -54,7 +56,7 @@ export default {
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
+  color: #ff0000;
   letter-spacing: 1px;
 }
 
